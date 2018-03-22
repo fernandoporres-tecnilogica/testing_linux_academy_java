@@ -2,21 +2,12 @@ public class Rectangulator {
 
     public static void main (String[] args) {
 
-        int length = Integer.parseInt(arg[0]);
-        int width  = Integer.parseInt(arg[1]);
+        int length = Integer.parseInt(args[0]);
+        int width  = Integer.parseInt(args[1]);
 
-        Rectangle myRectangle = new Rectangle(int length, int width);
+        Rectangle myRectangle = new Rectangle(length, width);
 
-        String output = String.format("*** Your Rectangle ***\n
-            \n
-            Length:    %d\n
-            Width:     %d\n
-            Area:      %d\n
-            Perimeter: %d\n",
-            myRectangle.getLength(),
-            myRectangle.getWidth(),
-            myRectangle.getArea(),
-            myRectangle.getPerimeter();
+        String output = String.format("*** Your Rectangle ***\n\nLength:    %d\nWidth:     %d\nArea:      %d\nPerimeter: %d\nmyRectangle.getLength(),myRectangle.getWidth(),myRectangle.getArea(),myRectangle.getPerimeter()");
 
         System.out.println(output);
     }
