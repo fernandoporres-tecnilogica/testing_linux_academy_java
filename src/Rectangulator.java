@@ -16,7 +16,7 @@ public class Rectangulator {
             myRectangle.getLength(),
             myRectangle.getWidth(),
             myRectangle.getArea(),
-            myRectangle.getPerimeter());
+            myRectangle.getPerimeter();
 
         System.out.println(output);
     }
