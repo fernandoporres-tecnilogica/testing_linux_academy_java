@@ -1,5 +1,5 @@
 pipeline {
-    # required docker, ant and java
+    // required docker, ant and java
     agent any
 
     stages {
