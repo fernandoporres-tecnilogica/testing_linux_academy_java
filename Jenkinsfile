@@ -16,7 +16,7 @@ pipeline {
         // no matter what happens in any prior stage, we will always archive the jar file
         always {
             // any JAR file insise dist folder should be archived
-            archive 'dist/*.jar'
+            archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
         }
     }
 }
