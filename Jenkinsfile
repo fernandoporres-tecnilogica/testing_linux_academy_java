@@ -1,13 +1,16 @@
 pipeline {
 
-    // required docker, ant and java
-    agent {
-        label 'master'
-    }
+    // use agent none if each stage may be executed on differente nodes
+    agent none
 
     stages {
 
         stage('Junit Test') {
+
+            agent {
+                label 'apache'
+            }
+
             steps {
                 sh 'ant -f test.xml -v'                
                 junit 'reports/result.xml'
@@ -15,6 +18,11 @@ pipeline {
         }
 
         stage('Build') {
+
+            agent {
+                label 'apache'
+            }
+
             steps {
                 sh 'ant -f build.xml -v'
             }
@@ -22,10 +30,31 @@ pipeline {
         }
 
         stage ('deploy') {
+
+            agent {
+                label 'apache'
+            }
+
             steps {
                 sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all"
             }
         }
+
+        stage ('Running on CentOS') {
+
+            agent {
+                label 'CentOS'
+            }
+
+            steps {
+                sh "wget http://fernandoporres1.mylabserver.com/rectangles/all/rectangle_${env_BUILD_NUMBER}.jar"
+                sh "java -jar rectangle_${env_BUILD_NUMBER}.jar 3 4"
+            }
+
+
+        }
+
+
 
     }
 
