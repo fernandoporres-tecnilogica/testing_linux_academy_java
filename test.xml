@@ -39,7 +39,7 @@
         <classpath refid="class.path" />
         <!-- Reffers to RectangleTest class -->
         <test name="RectangleTest" todir="${report.dir}" outfile="result">
-            <formatter type="xml">
+            <formatter type="xml" />
         </test>
     </junit>
   </target>
