@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 
 public class RectangleTest {
 
-    Rectange myRectangle = new Rectangle(5,6);
+    Rectangle myRectangle = new Rectangle(5,6);
 
     @Test
     public void testGetArea() {
