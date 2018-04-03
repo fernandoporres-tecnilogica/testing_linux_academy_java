@@ -27,6 +27,17 @@ pipeline {
                 sh 'ant -f build.xml -v'
             }
 
+            // post build steps. Since we no longer use one node for the whole pipeline we should include it after build success
+            post {
+                // no matter what happens in any prior stage, we will always archive the jar file
+                // always {
+                success {
+                    // any JAR file insise dist folder should be archived
+                    archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
+                }
+            }
+
+
         }
 
         stage ('deploy') {
@@ -51,20 +62,8 @@ pipeline {
                 sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
             }
 
-
         }
-
-
 
     }
 
-
-    // post build steps
-    post {
-        // no matter what happens in any prior stage, we will always archive the jar file
-        always {
-            // any JAR file insise dist folder should be archived
-            archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-        }
-    }
 }
