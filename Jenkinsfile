@@ -67,7 +67,7 @@ pipeline {
         stage ('Testing on Debian') {
 
             agent {
-                label 'CentOS'
+                docker 'openjdk:8u121-jre'
             }
 
             steps {
@@ -84,6 +84,7 @@ pipeline {
             }
 
             steps {
+                echo 'Promoting to Green'
                 sh "cp /var/www/html/rectangles/all/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
             }
 
