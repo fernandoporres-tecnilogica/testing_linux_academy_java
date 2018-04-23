@@ -82,7 +82,7 @@ pipeline {
         stage ('Promote to Green') {
 
             agent {
-                label 'CentOS'
+                label 'apache'
             }
 
             when {
@@ -97,12 +97,15 @@ pipeline {
         }
 
         stage ('Promote development branch to master') {
+
             agent {
-                label 'CentOS'
+                label 'apache'
             }
+
             when {
                 branch 'development'
             }
+
             steps {
                 echo "Stashing any local changes"
                 sh 'git stash'
