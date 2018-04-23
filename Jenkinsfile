@@ -96,7 +96,7 @@ pipeline {
 
         }
 
-        stage (Promote development branch to master) {
+        stage ('Promote development branch to master') {
             agent {
                 label 'CentOS'
             }
